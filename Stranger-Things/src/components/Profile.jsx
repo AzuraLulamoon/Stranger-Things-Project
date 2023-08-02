@@ -28,6 +28,8 @@ export default function Profile() {
             <h1>Your Profile!</h1>
             <p>Profile Information</p>
             {/* Profile Info */}
+            {/* Your Posts */}
+            {/* Your messages */}
             <button onClick={handleLogout}>Logout</button>
         </div>
     )

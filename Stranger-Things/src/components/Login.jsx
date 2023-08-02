@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+const COHORT_NAME = '2209-FTB-ET-WEB-FT'
+const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 // Create the Login component
 function Login() {
-  // State to hold the input values
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  // Function to handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // You can implement your login logic here
-    // For simplicity, we will just log the username and password
+    setErrorMessage('');
+
+    try {
+        // const response = await axios.post('')
+    } catch(error) {
+        setErrorMessage(' Your username or password is inccorect ');
+    }
     console.log('Username:', username);
     console.log('Password:', password);
   };

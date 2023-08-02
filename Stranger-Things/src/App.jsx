@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Posts from './components/Posts'
 import NewAccount from './components/NewAccount'
 import Profile from './components/Profile'
+// import SinglePost from './components/SinglePost'
 
 export default function App() {
 
@@ -17,6 +18,7 @@ export default function App() {
           <Route path='/Login' element={<Login />} />
           <Route path='/Profile' element={<Profile />} />
           <Route path='/NewAccount' element={<NewAccount />} />
+          {/* <Route path='/:id' element={<SinglePost />} /> */}
         </Routes>
         </div>
         </>
