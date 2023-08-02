@@ -18,7 +18,7 @@ export default function Profile() {
             <div>
                 <h1>My Profile</h1>
                 <p><Link to='/Login'>You must login first!</Link></p>
-                <p><Link to='NewAccount'>Dont have an account? Create one here!</Link></p>
+                <p><Link to='/NewAccount'>Dont have an account? Create one here!</Link></p>
             </div>
         )
     }

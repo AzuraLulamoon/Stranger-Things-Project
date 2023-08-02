@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 
 function CreateAccount() {
-  // State to hold the input values
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
         //backend Logic

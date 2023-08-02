@@ -4,7 +4,6 @@ import { useState } from 'react';
 const COHORT_NAME = '2209-FTB-ET-WEB-FT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
-// Create the Login component
 function Login() {
   
   const [username, setUsername] = useState('');
@@ -16,9 +15,23 @@ function Login() {
     setErrorMessage('');
 
     try {
-        // const response = await axios.post('')
+        const response = await fetch(`${BASE_URL}/users/login`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: {
+                    username: username,
+                    password: password,
+                }
+            })
+        })
+        const result = await response.json();
+        console.log(result);
+        return result
     } catch(error) {
-        setErrorMessage(' Your username or password is inccorect ');
+        setErrorMessage(' Your username and or password is inccorect ');
     }
     console.log('Username:', username);
     console.log('Password:', password);
@@ -27,6 +40,7 @@ function Login() {
   return (
     <div>
       <h1>Login</h1>
+      <p>{errorMessage.message}</p>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
