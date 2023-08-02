@@ -40,7 +40,7 @@ function Login() {
   return (
     <div>
       <h1>Login</h1>
-      <p>{errorMessage}</p>
+      <p>{errorMessage.message}</p>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
