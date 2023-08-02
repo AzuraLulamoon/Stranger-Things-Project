@@ -8,11 +8,11 @@ function Login() {
   
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [isError, setIsError] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setErrorMessage('');
+    setIsError(false);
 
     try {
         const response = await fetch(`${BASE_URL}/users/login`, {
@@ -28,19 +28,28 @@ function Login() {
             })
         })
         const result = await response.json();
+
+        // Error message logic
+        if (result.error) {
+            setIsError(true);
+        }
+        
         console.log(result);
         return result
+    
     } catch(error) {
-        setErrorMessage(' Your username and or password is inccorect ');
+        console.log(error)
     }
+    // user Info
     console.log('Username:', username);
     console.log('Password:', password);
-  };
-
+  
+};
+ console.log(isError)
   return (
     <div>
       <h1>Login</h1>
-      <p>{errorMessage.message}</p>
+      {isError ? <p>Your username or password is incorrect</p>:null}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
