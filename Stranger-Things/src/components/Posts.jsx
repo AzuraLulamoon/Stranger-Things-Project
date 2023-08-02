@@ -7,7 +7,6 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 export default function Posts() {
     const [ posts, setPosts ] = useState([])
-    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,7 +19,7 @@ export default function Posts() {
                 console.log(data.data.posts);
                 setPosts(data.data.posts);
             } catch(error) {
-                setErrorMessage(error);
+                console.error(error);
             }
         }
             
