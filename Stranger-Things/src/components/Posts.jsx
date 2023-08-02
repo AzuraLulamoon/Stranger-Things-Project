@@ -41,3 +41,5 @@ export default function Posts() {
         )} 
     </>  
 }
+
+//need to create a form to add new posts
