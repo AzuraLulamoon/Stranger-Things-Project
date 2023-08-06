@@ -1,5 +1,6 @@
 // imports
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const COHORT_NAME = '2209-FTB-ET-WEB-FT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
@@ -10,6 +11,7 @@ export default function NewForm() {
     const [price, setPrice] = useState('');
     const [location, setLocation] = useState('');
     const token = localStorage.getItem('token');
+    const navigate = useNavigate();
 
     const changeTitle = (event) => {
         setTitle(event.target.value);
@@ -59,8 +61,8 @@ export default function NewForm() {
         } else {
             console.error('post failed');
         }
+    navigate('/Profile')
 
-        console.log(newPost)
     } catch(error) {
         console.error('post error', error)
     }

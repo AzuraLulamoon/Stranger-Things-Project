@@ -25,6 +25,10 @@ export default function Posts() {
             
         fetchData();
     }, [])
+
+    const handleSend = (authorUsername) => {
+        navigate(`/SendMessage/${authorUsername}`)
+    }
     
     return <>
         <div>
@@ -38,9 +42,9 @@ export default function Posts() {
                 <h3>Location: {posts.location}</h3>
                 <h3>Price: {posts.price}</h3>
                 <p>{posts.description}</p>
+                <button onClick={() => handleSend(post.author.username)}/>
             </div>
         )} 
     </>  
 }
 
-//need to create a form to add new posts
