@@ -12,9 +12,9 @@ export default function NavBar() {
     return (
         <nav className="navigation">
             <ul>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/Profile'>Profile</Link></li>
-                {token ? null : <li><Link to='/Login'>Login</Link></li>}
+                <li id='homeLink'><Link to='/'>Home</Link></li>
+                <li id='profileLink'><Link to='/Profile'>Profile</Link></li>
+                {token ? null : <li id='loginLink'><Link to='/Login'>Sign in to your account!</Link></li>}
             </ul>
         </nav>
     );

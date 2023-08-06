@@ -8,6 +8,7 @@ export default function Profile() {
     const [userPosts, setUserPosts] = useState([]);
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
+    const [ messages, setMessages ] = useState([]);
 
     const onDelete = async (postId) => {
         try {
@@ -45,12 +46,17 @@ export default function Profile() {
             .then(response => response.json())
             .then(userData => {
                 setUserPosts(userData.data.posts);
+                setMessages(userData.data.messages)
             })
             .catch(error => {
                 console.error(error);
             });
         }
     }, [token]);
+
+    console.log('UserPost Data', userPosts);
+
+    console.log('My messages', messages);
 
 if (!token) {
     return (
@@ -79,6 +85,21 @@ if (!token) {
                     </div>
                 ))
             )}
+            <div className="messagesBox">
+                <h2> Your Messages </h2>
+                {
+                    messages.map((messages, index) => {
+                        
+                        return (
+                            <div key={index} id='messageCard'>
+                                <h3>From: {messages.fromUser.username} </h3>
+                                <h3>Post: {messages.post.title} </h3>
+                                <p> Message: {messages.content} </p>
+                            </div>
+                        )
+                    })
+                }
+            </div>
             <div>
                 <Link to='/NewPost'>Want to Post something?</Link>
                 <br />
