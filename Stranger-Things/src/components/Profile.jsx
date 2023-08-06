@@ -25,7 +25,7 @@ export default function Profile() {
                 Authorization: `Bearer ${token}`,
             },
         })
-        const response = 
+        .then((response) => response.json())
         .then((userData) => {
             setUser(userData);
         })

@@ -34,6 +34,7 @@ export default function Posts() {
             <div key={index} className="allPosts"
                 onClick={() => navigate(`{/$posts.id}`)}>
                 <h1>{posts.title}</h1>
+                <h3>{posts.author.username}</h3>
                 <h3>Location: {posts.location}</h3>
                 <h3>Price: {posts.price}</h3>
                 <p>{posts.description}</p>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 const COHORT_NAME = '2209-FTB-ET-WEB-FT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
@@ -8,12 +8,15 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isError, setIsError] = useState('');
+  const [token, setToken] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsError(false);
 
     try {
+        
         const response = await fetch(`${BASE_URL}/users/login`, {
             method: "POST",
             headers: {
@@ -27,6 +30,17 @@ function Login() {
             })
         })
         const result = await response.json();
+        const newToken = result.data.token
+
+        console.log(result.data.message)
+
+        console.log(token);
+
+        localStorage.setItem('token', newToken )
+        
+        setToken(result.data.token);
+
+        navigate('/Profile');
 
         // Error message logic
         if (result.error) {

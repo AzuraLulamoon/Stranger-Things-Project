@@ -1,17 +1,48 @@
 import { useState } from "react";
-function CreateAccount() {
+import { useNavigate } from "react-router-dom";
+
+const COHORT_NAME = '2209-FTB-ET-WEB-FT'
+const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
+
+function CreateAccount( { setToken } ) {
 
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
-        //backend Logic
+      try {
+        const response = await fetch(`${BASE_URL}/users/register`, {
+
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify({
+            user: {
+              username: username,
+              password: password,
+            }
+          })
+        });
+      
+    
+      const data = await response.json();
+      console.log(data);
+      setToken(data.token);
+
+      setUsername('')
+      setPassword('')
+
+      navigate('/Login');
+      } catch(err) {
+        console.error(err)
+      }
     console.log('Username:', username);
-    console.log('Email:', email);
     console.log('Password:', password);
-  };
+    
+  }
 
   return (
     <div>
@@ -23,25 +54,17 @@ function CreateAccount() {
             type="text"
             id="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+
         <div>
           <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </div>
         <button type="submit">Create Account</button>
@@ -51,5 +74,3 @@ function CreateAccount() {
 }
 
 export default CreateAccount;
-
-// need to finish this logic
