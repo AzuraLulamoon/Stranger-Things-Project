@@ -51,8 +51,17 @@ export default function Profile() {
         }
     }, [token]);
 
+if (!token) {
     return (
         <div>
+            <h1>Must be logged in to view profile</h1>
+            <br />
+            <Link to='/Login'>Log in or Create new account</Link>
+        </div>
+        );
+    } else {
+        return (
+            <div>
             <h2>Your Posts</h2>
             {userPosts.length === 0 ? (
                 <p>Nothing to see here...</p>
@@ -75,5 +84,6 @@ export default function Profile() {
                 <button onClick={handleLogout}>Logout</button>        
             </div>
         </div>
-    );
+        )
+    }
 }
