@@ -29,6 +29,7 @@ export default function Profile() {
     const handleLogout = () => {
         setUserPosts([]);
         localStorage.removeItem('token');
+        alert('You have been logged out')
         navigate('/Login');
     };
     

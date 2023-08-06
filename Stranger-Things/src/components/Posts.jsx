@@ -26,23 +26,22 @@ export default function Posts() {
         fetchData();
     }, [])
 
-    const handleSend = (authorUsername) => {
-        navigate(`/SendMessage/${authorUsername}`)
+    const handleSend = (postID) => {
+        navigate(`/SendMessage/${postID}`)
     }
-    
+
     return <>
         <div>
             <h1>Stranger Things</h1>
         </div>
         {posts.map((posts, index) => 
-            <div key={index} className="allPosts"
-                onClick={() => navigate(`{/$posts.id}`)}>
+            <div key={index} className="allPosts">
                 <h1>{posts.title}</h1>
                 <h3>{posts.author.username}</h3>
                 <h3>Location: {posts.location}</h3>
                 <h3>Price: {posts.price}</h3>
                 <p>{posts.description}</p>
-                <button onClick={() => handleSend(post.author.username)}/>
+                <button onClick={() => handleSend(posts._id)}>Send a message</button>
             </div>
         )} 
     </>  
