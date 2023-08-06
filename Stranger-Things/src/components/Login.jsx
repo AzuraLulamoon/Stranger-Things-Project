@@ -6,7 +6,7 @@ const COHORT_NAME = '2306-FTB-ET-WEB-FT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 //main function
-function Login() {
+export default function Login() {
 //setstates for login info + navigation variable  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +20,7 @@ function Login() {
     setIsError(false);
 
     try {
-        
+        //URL post stuff
         const response = await fetch(`${BASE_URL}/users/login`, {
             method: "POST",
             headers: {
@@ -35,40 +35,34 @@ function Login() {
         })
         const result = await response.json();
         const newToken = result.data.token
-
+        //log all the things
         console.log(result.data.message)
-
         console.log(newToken);
-
+        //storing that shiny token in local storage for later use, honestly faster and cleaner than moving the token around with useState
         localStorage.setItem('token', newToken )
-        
+        //navigation link, puts you on your profile page after login
         navigate('/Profile');
-
+        //this exsists to fix a bug with certain conditional rendering errors i ran into
         window.location.reload();
 
-        // Error message logic
-        if (result.error) {
-            setIsError(true);
-        }
-        
         console.log(result);
         return result
-    
+    //error logic
     } catch(error) {
         console.log(error)
+        setIsError(true)
     }
-    // user Info
+    // user Info logs
     console.log('Username:', username);
     console.log('Password:', password);
   
 };
- console.log(isError)
   return (
-    <div>
-      <h1>Login</h1>
+    <div className='loginPage'>
+      <h1 id='loginTitle'>Login</h1>
       {isError ? <p>Your username or password is incorrect</p>:null}
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className='loginForm'>
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -86,13 +80,11 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" id='loginButton'>Login</button>
       </form>
-        <div>
+        <div id='newAccountLink'>
             <Link to='/NewAccount'>Dont have an account? Create one here!</Link>
         </div>
     </div>
   );
 }
-
-export default Login;
