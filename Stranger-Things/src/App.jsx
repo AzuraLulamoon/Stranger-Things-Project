@@ -19,10 +19,10 @@ export default function App() {
       <div>
         <Routes>
           <Route path='/' element={<Posts />} />
-          <Route path='/Login' element={<Login token={token} setToken={setToken} />} />
+          <Route path='/Login' element={<Login />} />
           <Route path='/Profile' element={<Profile />} />
-          <Route path='/NewAccount' element={<NewAccount token={token} setToken={setToken} />} />
-          <Route path='/NewPost' token={token} setToken={setToken} element={<NewPost />} />
+          <Route path='/NewAccount' element={<NewAccount />} />
+          <Route path='/NewPost' element={<NewPost />} />
           <Route path='/SendMessage/:postID' element={<SendMessage />} />
         </Routes>
         </div>

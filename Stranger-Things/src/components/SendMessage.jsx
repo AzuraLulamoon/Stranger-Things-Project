@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const COHORT_NAME = '2209-FTB-ET-WEB-FT'
+const COHORT_NAME = '2306-FTB-ET-WEB-FT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 export default function SendMessage() {
@@ -21,14 +21,17 @@ export default function SendMessage() {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify({
-                    recipient: postID,
-                    content: message
+                    message: {
+                        content: message
+                    }
                 })
             });
 
+            setMessage(message);
+
             if (response.ok) {
                 console.log('Message sent successfully!');
-                navigate('/Posts')
+                navigate('/Profile')
             } else {
                 console.error('Failed to send message.');
             }

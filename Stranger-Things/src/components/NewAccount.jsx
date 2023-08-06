@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const COHORT_NAME = '2209-FTB-ET-WEB-FT'
+const COHORT_NAME = '2306-FTB-ET-WEB-FT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
-function CreateAccount( { setToken } ) {
+function CreateAccount() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -30,7 +30,7 @@ function CreateAccount( { setToken } ) {
     
       const data = await response.json();
       console.log(data);
-      setToken(data.token);
+      // setToken(data.token);
 
       setUsername('')
       setPassword('')
