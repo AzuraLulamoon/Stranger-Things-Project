@@ -1,15 +1,17 @@
+//imports
 import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+//URL variables
 const COHORT_NAME = '2306-FTB-ET-WEB-FT'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
-
+//main function
 export default function Profile() {
+    //useState declarations + others
     const [userPosts, setUserPosts] = useState([]);
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
     const [ messages, setMessages ] = useState([]);
-
+    //post deletion function
     const onDelete = async (postId) => {
         try {
             const response = await fetch(`${BASE_URL}/posts/${postId}`, {
@@ -20,21 +22,28 @@ export default function Profile() {
                 }
             });
             const result = await response.json();
+            //logs result
             console.log(result);
+            //filters posts for actives
             setUserPosts(prevUserPosts => prevUserPosts.filter(post => post._id !== postId));
         } catch(err) {
             console.error(err);
         }
     };
-
+    //logout function
     const handleLogout = () => {
+        //clears states
         setUserPosts([]);
+        //clears token
         localStorage.removeItem('token');
+        //message for user
         alert('You have been logged out')
+        //window reload to fix a conditional rendering bug
         window.location.reload();
+        //navigates you back to login
         navigate('/Login');
     };
-    
+    //main fetch function for the currently logged in users data
     useEffect(() => {
         if (token) {
             fetch(`${BASE_URL}/users/me`, {
@@ -43,6 +52,7 @@ export default function Profile() {
                     Authorization: `Bearer ${token}`,
                 },
             })
+            //setting states using .then notation, wanted to try it out
             .then(response => response.json())
             .then(userData => {
                 setUserPosts(userData.data.posts);
@@ -52,12 +62,8 @@ export default function Profile() {
                 console.error(error);
             });
         }
-    }, [token]);
-
-    console.log('UserPost Data', userPosts);
-
-    console.log('My messages', messages);
-
+    }, [token]); //token dependency
+//rendering, if else statements with (!token) to create conditional rendering to only logged in users will see the }else{ data
 if (!token) {
     return (
         <div>
@@ -67,6 +73,7 @@ if (!token) {
         </div>
         );
     } else {
+        
         return (
             <div>
             <h2>Your Posts</h2>
