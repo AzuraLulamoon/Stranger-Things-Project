@@ -8,6 +8,7 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 export default function Posts() {
     const [ posts, setPosts ] = useState([])
     const navigate = useNavigate();
+    const token = localStorage.getItem('token')
 
     useEffect(() => {
     
@@ -41,7 +42,7 @@ export default function Posts() {
                 <h3>Location: {posts.location}</h3>
                 <h3>Price: {posts.price}</h3>
                 <p>{posts.description}</p>
-                <button onClick={() => handleSend(posts._id)}>Send a message</button>
+                {token && <button onClick={() => handleSend(posts._id)}>Send a message</button>}
             </div>
         )} 
     </>  
