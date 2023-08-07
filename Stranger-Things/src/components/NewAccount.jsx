@@ -34,7 +34,7 @@ function CreateAccount() {
 
       setUsername('')
       setPassword('')
-
+      alert('Account created succesfully')
       navigate('/Login');
       } catch(err) {
         console.error(err)

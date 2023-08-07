@@ -38,10 +38,10 @@ export default function Profile() {
         localStorage.removeItem('token');
         //message for user
         alert('You have been logged out')
-        //window reload to fix a conditional rendering bug
-        // window.location.reload();
         //navigates you back to login
         navigate('/Login');
+        //window reload to fix a conditional rendering bug
+        window.location.reload();
     };
     //main fetch function for the currently logged in users data
     useEffect(() => {

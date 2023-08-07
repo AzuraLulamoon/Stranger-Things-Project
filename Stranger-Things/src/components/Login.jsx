@@ -40,11 +40,10 @@ export default function Login() {
         console.log(newToken);
         //storing that shiny token in local storage for later use, honestly faster and cleaner than moving the token around with useState
         localStorage.setItem('token', newToken )
-        //navigation link, puts you on your profile page after login
-        navigate('/Profile');
         //this exsists to fix a bug with certain conditional rendering errors i ran into
         window.location.reload();
-
+        //navigation link, puts you on your profile page after login
+        navigate('/Profile');
         console.log(result);
         return result
     //error logic
