@@ -39,7 +39,7 @@ export default function Profile() {
         //message for user
         alert('You have been logged out')
         //window reload to fix a conditional rendering bug
-        window.location.reload();
+        // window.location.reload();
         //navigates you back to login
         navigate('/Login');
     };
