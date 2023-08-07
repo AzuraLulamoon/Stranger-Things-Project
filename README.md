@@ -13,4 +13,6 @@
 to send messages to the authors of the selected post. Also includes a built in filter to filter out inactive posts
 
 Link to deployed version here: https://64d0535d739d94200ad1d1ed--voluble-liger-1fca4e.netlify.app
-    -NOTE: THE DEPLOYED VERSION DOES NOT HAVE AUTOMATIC REDIRECT FROM THE ACCOUNT CREATION PAGE TO LOGIN, AND LOGIN PAGE TO PROFILE. THIS IS DUE TO A KNOWN BUT THAT IS CAUSING A 404 ERROR WHEN ATTEMPTING THE REDIRECT, CAUSE IS UNKNOWN, FEATURE REMOVED UNTILL FIX CAN BE APPLIED, NAVIGATE VIA NAVBAR
+    -NOTE, KNOWN BUG: THE DEPLOYED VERSION AUTOMATIC REDIRECT IS CURRENTLY BROKEN, ERROR 404 IS ENCOUNTERED WHEN THE SITE ATTEMPTS TO REDIRECT, CAUSE UNKNOWN. WHEN ON THE SITE SIMPLY HIT THE BACK BUTTON AFTER YOU HIT THE ERROR OR REMOVE THE
+    /Profile EXTENTION FROM YOUR URL BAR.
+        -for whatever reason the non deployed version doesnt have this issue when running npm dev, no idea what causing it to break although i assume it has something to do with the way i have structured my routes.
