@@ -51,24 +51,26 @@ export default function Posts() {
 
     return (
         <div>
-            <h1>Stranger Things</h1>
-            <form onSubmit={(event) => {
+            <h1 className="postTitleCard">All Posts</h1>
+            <form className='searchContainer' onSubmit={(event) => {
                 event.preventDefault();
                 HandleSearch();
             }}>
+                <label className="searchBar"> Search:
                 <input
                     type="text"
                     id="searchFunction"
                     value={searchVal}
                     onChange={(event) => setSearchVal(event.target.value)}
                     />
-                <button type="submit">Search Posts</button>
-                <button type="button" onClick={clearSearch}>Clear</button>
+                    </label>
+                <button type="submit" className="searchButtons">Search Posts</button>
+                <button type="button" className='searchButtons' onClick={clearSearch}>Clear</button>
             </form>
 
             {searchActive ? ( 
                 Searches.map(post => (
-                        <div key={post._id}>
+                        <div key={post._id} className="allPosts">
                             <h1>{post.title}</h1>
                             <h3>{post.author.username}</h3>
                             <h3>Location: {post.location}</h3>

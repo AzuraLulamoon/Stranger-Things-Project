@@ -40,10 +40,10 @@ export default function Login() {
         console.log(newToken);
         //storing that shiny token in local storage for later use, honestly faster and cleaner than moving the token around with useState
         localStorage.setItem('token', newToken )
-        //this exsists to fix a bug with certain conditional rendering errors i ran into
-        window.location.reload();
         //navigation link, puts you on your profile page after login
         navigate('/Profile');
+        //this exsists to fix a bug with certain conditional rendering errors i ran into
+        window.location.reload();
         console.log(result);
         return result
     //error logic
@@ -60,8 +60,8 @@ export default function Login() {
     <div className='loginPage'>
       <h1 id='loginTitle'>Login</h1>
       {isError ? <p>Your username or password is incorrect</p>:null}
-      <form onSubmit={handleSubmit}>
-        <div className='loginForm'>
+      <form onSubmit={handleSubmit} className='loginFormContent'>
+        <div className='loginField'>
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -70,7 +70,7 @@ export default function Login() {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div>
+        <div className='passwordField'>
           <label htmlFor="password">Password:</label>
           <input
             type="password"

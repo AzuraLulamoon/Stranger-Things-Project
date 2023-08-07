@@ -45,10 +45,10 @@ function CreateAccount() {
   }
 
   return (
-    <div>
+    <div className="newAccountForm">
       <h1>Create a New Account</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="usernameField">
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -58,7 +58,7 @@ function CreateAccount() {
           />
         </div>
 
-        <div>
+        <div className="passwordField">
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -67,7 +67,7 @@ function CreateAccount() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button type="submit">Create Account</button>
+        <button type="submit" className="accountButton">Create Account</button>
       </form>
     </div>
   );

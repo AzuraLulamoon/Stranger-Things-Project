@@ -76,14 +76,18 @@ if (!token) {
         
         return (
             <div>
-            <h2>Your Posts</h2>
+            <h2 className="profileTitleCard">Your Posts</h2>
+            {/* Link for new posts */}
+            <div className="newPostLink">
+                <Link to='/NewPost'>Want to Post something?</Link>
+                </div>
             {userPosts.length === 0 ? (
                 <p>Nothing to see here...</p>
             ) : (
                 userPosts
                 .filter(post => post.active)
                 .map(post => (
-                    <div key={post._id} id='myPostsCard'>
+                    <div key={post._id} id='profilePostCards'>
                         <h2>Title: {post.title}</h2>
                         <p>Description: {post.description}</p>
                         <h4>Price: {post.price}</h4>
@@ -91,9 +95,11 @@ if (!token) {
                         <button onClick={() => onDelete(post._id)}>Delete</button>
                     </div>
                 ))
+                
             )}
+            
             <div className="messagesBox">
-                <h2> Your Messages </h2>
+                <h2 className="profileTitleCard"> Your Messages </h2>
                 {
                     messages.map((messages, index) => {
                         
@@ -108,7 +114,7 @@ if (!token) {
                 }
             </div>
             <div>
-                <Link to='/NewPost'>Want to Post something?</Link>
+                
                 <br />
                 <button onClick={handleLogout}>Logout</button>        
             </div>

@@ -69,25 +69,29 @@ export default function NewForm() {
 
     }
     return (
-        <div>
+        <div className="newPostForm">
             <h1>New Post</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Title:</label>
                     <input type="text" value={title} onChange={changeTitle} />
                 </div>
+                <br/>
                 <div>
                     <label>Description:</label>
                     <input type="text" value={description} onChange={changeDescription} />
                 </div>
+                <br/>
                 <div>
                     <label>Price:</label>
                     <input type="text" value={price} onChange={changePrice} />
                 </div>
+                <br/>
                 <div>
                     <label>Location:</label>
                     <input type="text" value={location} onChange={changeLocation} />
                 </div>
+                <br/>
                 <button type='submit'>Post it!</button>
             </form>
 

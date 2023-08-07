@@ -6,6 +6,7 @@
   color-scheme: light dark;
   color: rgb(0, 0, 0);
   background-color: #cafffb;
+  padding-top: 11%;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -55,6 +56,122 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.navigation {
+  background-color: #ffffff;
+  border-bottom: solid;
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+#searchFunction {
+  margin-right: 10px;
+}
+
+.searchButtons {
+  margin-left: 20px;
+}
+
+.searchContainer {
+  background-color: #ffffff;
+  border: solid;
+  border-width: 2px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: fit-content;
+  position: fixed;
+  top: 200px;
+  left: 20px;
+}
+
+.allPosts {
+  border: solid;
+  background-color: #ffffff;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 50px;
+}
+
+.postTitleCard {
+  border: solid;
+  background-color: #ffffff;
+}
+
+#profilePostCards {
+  border: solid;
+  padding-bottom: 20px;
+  margin: 40px;
+  background-color: #ffffff;
+}
+
+#messageCard {
+  border: solid;
+  padding: 20px;
+  margin: 40px;
+  background-color: #ffffff;
+}
+
+.profileTitleCard {
+  border: solid;
+  background-color: #ffffff;
+}
+
+.newPostLink {
+  margin-top: 30px;
+}
+
+.newPostForm {
+  border: solid;
+  background-color: #ffffff;
+  width: 30%;
+  position: fixed;
+  right: 50%;
+  left: 35%;
+  top: 40%;
+  padding-bottom: 40px;
+}
+.loginPage {
+  border: solid;
+  background-color: #ffffff;
+  padding: 40px;
+  position: fixed;
+  top: 40%;
+  right: 39%;
+}
+
+.loginField {
+  margin-bottom: 8px;
+}
+
+#newAccountLink {
+  margin-top: 10px;
+}
+
+#loginButton {
+  margin-top: 10px;
+}
+
+.newAccountForm {
+  border: solid;
+  background-color: #ffffff;
+  padding: 40px;
+  position: fixed;
+  top: 40%;
+  right: 33%;
+}
+
+.usernameField {
+  margin-bottom: 10px;
+}
+
+.accountButton {
+  margin-top: 10px;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
