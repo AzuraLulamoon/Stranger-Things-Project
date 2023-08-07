@@ -30,7 +30,7 @@ export default function SendMessage() {
             setMessage(message);
 
             if (response.ok) {
-                console.log('Message sent successfully!');
+                console.log(alert('Message sent!'), 'Message sent successfully!');
                 navigate('/Profile')
             } else {
                 console.error('Failed to send message.');

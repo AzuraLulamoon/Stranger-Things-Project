@@ -22,8 +22,8 @@ export default function Profile() {
                 }
             });
             const result = await response.json();
-            //logs result
-            console.log(result);
+            //logs result + alert
+            console.log(alert('post has been deleted'), 'post has been deleted', result);
             //filters posts for actives
             setUserPosts(prevUserPosts => prevUserPosts.filter(post => post._id !== postId));
         } catch(err) {

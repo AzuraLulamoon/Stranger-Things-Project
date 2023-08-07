@@ -5,14 +5,10 @@ import NavBar from './components/NavBar'
 import Posts from './components/Posts'
 import NewAccount from './components/NewAccount'
 import Profile from './components/Profile'
-import { useState } from 'react'
 import NewPost from './components/NewPost'
 import SendMessage from './components/SendMessage'
 
 export default function App() {
-  const [token, setToken] = useState(null);
-
-  console.log('Token', token)
   return (
     <>
       <NavBar />

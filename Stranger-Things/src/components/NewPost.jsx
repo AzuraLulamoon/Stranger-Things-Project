@@ -53,7 +53,7 @@ export default function NewForm() {
         });
 
         if (response.ok) {
-            console.log('yay new post!')
+            console.log(alert('New post created'), 'yay new post!')
             setTitle(title);
             setDescription(description);
             setPrice(price);
